@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='water.css') }}">
+  
+  <script src="{{ url_for('static', filename='chart.js') }}"></script>
+  <script src="{{ url_for('static', filename='chartjs-plugin-zoom.js') }}"></script>
+
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgZmlsbD0iI2ZnZyIgLz4KPC9zdmc+Cg==" type="image/svg+xml">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+	<title>Braid Robotics Simulation Dashboard</title>
+	<meta charset="utf-8" />
+  <script>
+    // Defining the zoom plugin configuration for Chart.js globally for reusability
+    window.chartJsPlugins = {
+      plugins: {
+        zoom: {
+          zoom: {
+            wheel: {
+              enabled: true,
+              modifierKey: 'meta'
+            },
+            pinch: {
+              enabled: true
+            },
+            mode: 'xy'
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body>
+  <nav>
+    <h4><a id="nav-logo" href="/">Frontpage</a></h4>
+  </nav>
+
+  {% with flashes = get_flashed_messages(with_categories=true) %}
+    {% if flashes %}
+      <ul class="flashes">
+      {% for category, message in flashes %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  
+  <div class="body">
+  	{% block body %}{% endblock %}
+  </div>
+
+
+  <div id="img-modal" class="modal" style="display:none;">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="img-modal-content">
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("img-modal");
+        const modalImg = document.getElementById("img-modal-content");
+        const span = document.querySelector(".modal-close");
+        const triggers = document.querySelectorAll(".modal-trigger");
+
+        triggers.forEach(img => {
+            img.addEventListener("dblclick", function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            });
+        });
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    });
+</script>
+</body>
+</html>

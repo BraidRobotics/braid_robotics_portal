@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+{% block title %}Strands Analysis{% endblock %}
+{% block body %}
+
+<h1>Strand Count Analysis</h1>
+
+<p>
+    This analysis explores how the number of strands affects structural performance.
+    All measurements are taken at <strong>10% height compression</strong> for consistent comparison.
+</p>
+
+<div id="height-reduction-vs-force">
+    <h2><a href="#height-reduction-vs-force">Height Reduction vs. Force</a></h2>
+    <p>
+        <strong>Purpose:</strong> Shows how different strand configurations respond to applied force.<br>
+        <strong>Comparison:</strong> All strand counts (number_of_strands__02 through number_of_strands__08) plotted together to compare force-displacement behavior.
+    </p>
+    {% if strand_height_reduction_vs_force_path %}
+    <iframe src="/graphs/{{ strand_height_reduction_vs_force_path }}" width="100%" height="600" frameborder="0"></iframe>
+    {% else %}
+    <p>No data available for height reduction vs. force graph.</p>
+    {% endif %}
+</div>
+
+<div id="force-vs-displacement">
+    <h2><a href="#force-vs-displacement">Force vs. Displacement (Non-Linear Spring Comparison)</a></h2>
+    <p>
+        <strong>Purpose:</strong> Directly compares experimental behavior to ideal linear springs (Hooke's Law: F = kΔx).<br>
+        <strong>Visualization:</strong>
+    </p>
+    <ul>
+        <li><strong>Solid lines:</strong> Experimental data from simulations</li>
+        <li><strong>Dashed lines:</strong> Hypothetical linear spring with initial stiffness k₀</li>
+    </ul>
+    <p>
+        <strong>Key Observation:</strong> Experimental curves deviate from linear (dashed) lines, showing:
+    </p>
+    <ul>
+        <li>Concave up (stiffening) in early compression</li>
+        <li>Concave down (softening) in late compression</li>
+    </ul>
+    <p>
+        <strong>Conclusion:</strong> These structures behave as <strong>non-linear springs</strong> with variable stiffness k(x), not simple Hooke's Law springs.
+    </p>
+    {% if strand_force_vs_displacement_path %}
+    <iframe src="/graphs/{{ strand_force_vs_displacement_path }}" width="100%" height="650" frameborder="0"></iframe>
+    {% else %}
+    <p>No data available for force vs. displacement graph.</p>
+    {% endif %}
+</div>
+
+<div id="stiffness-vs-compression">
+    <h2><a href="#stiffness-vs-compression">Stiffness vs. Compression</a></h2>
+    <p>
+        <strong>Purpose:</strong> Reveals the non-linear spring behavior of braided structures.<br>
+        <strong>Key Insight:</strong> Unlike linear springs (F = kΔx with constant k), braided structures show varying stiffness:<br>
+    </p>
+    <ul>
+        <li><strong>Progressive Stiffening:</strong> Stiffness increases at low-to-medium compression (braid geometry locks up)</li>
+        <li><strong>Softening Phase:</strong> Stiffness decreases at high compression (approaching buckling)</li>
+    </ul>
+    <p>
+        <strong>Interpretation:</strong> The peak stiffness point indicates optimal operating range before structural degradation begins.
+    </p>
+    {% if strand_stiffness_vs_compression_path %}
+    <iframe src="/graphs/{{ strand_stiffness_vs_compression_path }}" width="100%" height="650" frameborder="0"></iframe>
+    {% else %}
+    <p>No data available for stiffness vs. compression graph.</p>
+    {% endif %}
+</div>
+
+<div id="weight-scaling">
+    <h2><a href="#weight-scaling">Weight Scaling Validation</a></h2>
+    <p>
+        <strong>Purpose:</strong> Validates simulation physics by confirming weight scales linearly with strand count.<br>
+        <strong>Theory:</strong> Weight = Density × Volume ∝ num_strands (for constant geometry)<br>
+        <strong>Expected:</strong> Data points should align with theoretical linear scaling line.
+    </p>
+    {% if strand_count_weight_graph_path %}
+    <iframe src="/graphs/{{ strand_count_weight_graph_path }}" width="100%" height="550" frameborder="0"></iframe>
+    {% else %}
+    <p>No data available for weight scaling graph.</p>
+    {% endif %}
+</div>
+
+<div id="force-scaling">
+    <h2><a href="#force-scaling">Load-Bearing Capacity Scaling Laws</a></h2>
+    <p>
+        <strong>Purpose:</strong> Identifies how load-bearing capacity scales with strand count.<br>
+        <strong>Theoretical Models:</strong>
+    </p>
+    <ul>
+        <li><strong>Linear (F ∝ n):</strong> Material quantity dominates (axial compression)</li>
+        <li><strong>Quadratic (F ∝ n²):</strong> Structural stiffness dominates (bending/buckling)</li>
+    </ul>
+    <p>
+        <strong>Interpretation:</strong> Linear scaling suggests simple material addition; quadratic suggests improved structural geometry.
+    </p>
+    {% if strand_count_force_graph_path %}
+    <iframe src="/graphs/{{ strand_count_force_graph_path }}" width="100%" height="650" frameborder="0"></iframe>
+    {% else %}
+    <p>No data available for load-bearing capacity scaling graph.</p>
+    {% endif %}
+</div>
+
+<div id="efficiency-scaling">
+    <h2><a href="#efficiency-scaling">Structural Efficiency Scaling</a></h2>
+    <p>
+        <strong>Purpose:</strong> Shows how efficiently structures support load relative to their weight as strand count increases.<br>
+        <strong>Question Answered:</strong> Do more strands improve weight efficiency?<br>
+        <strong>Theoretical Models:</strong>
+    </p>
+    <ul>
+        <li><strong>Constant (E ∝ n⁰):</strong> Efficiency unchanged (F ∝ W ∝ n)</li>
+        <li><strong>Linear (E ∝ n):</strong> Efficiency increases linearly (F ∝ n², W ∝ n)</li>
+    </ul>
+    <p>
+        <strong>Interpretation:</strong> If data follows linear scaling, more strands are significantly more weight-efficient.
+    </p>
+    {% if strand_count_efficiency_graph_path %}
+    <iframe src="/graphs/{{ strand_count_efficiency_graph_path }}" width="100%" height="650" frameborder="0"></iframe>
+    {% else %}
+    <p>No data available for structural efficiency scaling graph.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

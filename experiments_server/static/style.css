@@ -1,0 +1,198 @@
+/* Website Defaults */
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+}
+
+div.page div.body {
+    padding: 10px;
+}
+
+div.page div.footer {
+    background: #eee;
+    color: #888;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.block {
+    border: 0.5em solid black;
+    border-radius: 0.5em;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+
+ul.flashes {
+    list-style: none;
+    margin: 10px 10px 0 10px;
+    padding: 0;
+}
+
+ul.flashes li {
+    background: #0c9115;
+    border: 1px solid #013014;
+    color: white;
+    padding: 4px;
+    font-size: 13px;
+}
+
+ul.flashes li.error {
+	background: #e10f0f;
+	border: 1px solid #DD6F6F;
+    color: white;
+}
+
+div.error {
+    margin: 10px 0;
+    background: #FAE4E4;
+    border: 1px solid #DD6F6F;
+    padding: 4px;
+    font-size: 13px;
+}
+
+
+body {
+    max-width: 95vw;
+}
+
+/* Frontpage */
+
+#new-experiment-input {
+    width: 98.8%;
+}
+
+#new-experiment-button {
+    width: 100%;
+}
+
+/* Experiment Series Table */
+
+.delete-button-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+.delete-button {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	border: none;
+	font-size: 2em;
+	cursor: pointer;
+}
+
+.group-header {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 0 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.group-header:hover {
+    background-color: #261d45;
+}
+
+.group-header .toggle-icon {
+    float: right;
+    font-weight: bold;
+}
+
+.group-content {
+    margin-bottom: 20px;
+}
+
+.collapsed .group-content {
+    display: none;
+}
+
+/* Experiments Page */
+
+td input[type="number"],
+td input[type="text"],
+td textarea,
+td select {
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    appearance: none;
+}
+
+td input[type="number"]:focus,
+td input[type="text"]:focus,
+td textarea:focus,
+td select:focus {
+    outline: none;
+}
+
+#description-textarea{
+    height: 0.8em;
+}
+
+#run-experiments-button {
+    background-color: #0c9115;
+}
+
+.outdated td {
+    background-color: rgb(237, 0, 0);
+}
+
+/* Modal */
+
+.modal {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal-content {
+	max-width: 90%;
+	max-height: 90%;
+	box-shadow: 0 0 20px #000;
+	display: block;
+	margin: auto;
+}
+
+.modal-close {
+	position: absolute;
+	top: 20px;
+	right: 35px;
+	color: #fff;
+	font-size: 40px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+/* Anchor links for charts and graphs */
+h2 a, h3 a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.chart-section {
+	margin-bottom: 40px;
+}
+
+.chart-section iframe {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
