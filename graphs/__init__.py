@@ -1,5 +1,30 @@
 from .graph_constants import TARGET_HEIGHT_REDUCTION_PERCENT
-
-# Lazy imports to avoid circular dependency
-# Import these modules directly when needed instead of importing through __init__
-# e.g., from graphs.aggregate_graphs import generate_load_capacity_ratio_graph
+from .aggregate_graphs import (
+    generate_load_capacity_ratio_graph,
+    generate_strand_thickness_weight_graph,
+    generate_strand_thickness_force_graph,
+    generate_strand_thickness_efficiency_graph,
+    generate_thickness_height_reduction_vs_force_graph,
+    generate_strand_thickness_max_survivable_force_graph,
+    generate_layer_count_height_graph,
+    generate_layer_count_force_graph,
+    generate_layer_count_efficiency_graph,
+    generate_strand_count_weight_graph,
+    generate_strand_count_force_graph,
+    generate_strand_count_efficiency_graph,
+    generate_recovery_by_thickness_graph,
+    generate_recovery_by_layers_graph,
+    generate_recovery_by_strands_graph,
+    generate_recovery_heatmap_thickness_layers,
+    generate_recovery_heatmap_strands_layers,
+    generate_recovery_heatmap_strands_thickness,
+    generate_recovery_parameter_importance_graph,
+    generate_equilibrium_time_graph,
+    generate_equilibrium_time_by_strands_graph
+)
+from .series_graphs import (
+    generate_experiment_series_force_graph,
+    generate_experiment_series_height_graph,
+    generate_experiment_series_elastic_recovery_graph
+)
+from .generate_after_experiments import generate_graphs_after_experiments
