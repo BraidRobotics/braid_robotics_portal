@@ -5,7 +5,7 @@ from collections import defaultdict
 from database.models.experiment_series_model import ExperimentSeries
 from database.models.experiment_model import Experiment
 
-from graphs import TARGET_HEIGHT_REDUCTION_PERCENT
+from constants import TARGET_HEIGHT_REDUCTION_PERCENT
 
 
 def filter_force_no_force_experiments(experiments, initial_height):
@@ -964,7 +964,7 @@ def get_load_capacity_ratio_torsional_chart_values(session):
 
 
 def _get_load_capacity_ratio_chart_values(session, force_column):
-	from graphs import TARGET_HEIGHT_REDUCTION_PERCENT
+	from constants import TARGET_HEIGHT_REDUCTION_PERCENT
 
 	series_map = {
 		row.experiment_series_name: row
@@ -1040,7 +1040,7 @@ def get_models_meeting_target_count(session):
 	Returns:
 		dict with 'met_target' count and 'total' count
 	"""
-	from graphs import TARGET_HEIGHT_REDUCTION_PERCENT
+	from constants import TARGET_HEIGHT_REDUCTION_PERCENT
 
 	series_map = {
 		row.experiment_series_name: row
